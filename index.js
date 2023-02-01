@@ -3,10 +3,10 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 
 const app = express();
-app.use(express.json());
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 const httpServer = createServer(app);
+// httpServer.use(express.json());
+// httpServer.use(helmet());
+// httpServer.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 const io = new Server(httpServer, {
   // {
   // cors: {
