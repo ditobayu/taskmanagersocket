@@ -33,11 +33,11 @@ io.on("connection", (socket) => {
       sender: id,
       chat,
     });
-    console.log(chat);
+    // console.log(chat);
   });
 });
 
-httpServer.listen(3002);
+httpServer.listen(3002 || 3003);
 export default httpServer;
 
 // export default io;
