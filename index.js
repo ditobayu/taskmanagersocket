@@ -19,6 +19,11 @@ const io = new Server(httpServer, {
 // const io = require("socket.io")(3002,
 //);
 // console.log("asda");
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
