@@ -9,9 +9,9 @@ const httpServer = createServer(app);
 // httpServer.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 const io = new Server(httpServer, {
   // {
-  // cors: {
-  //   origin: ["http://localhost:3000"],
-  // },
+  cors: {
+    origin: ["http://localhost:3000"],
+  },
   // }
   /* options */
 });
