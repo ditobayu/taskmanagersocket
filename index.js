@@ -3,16 +3,21 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 
 const app = express();
+app.use(express.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
+  // {
+  // cors: {
+  //   origin: ["http://localhost:3000"],
+  // },
+  // }
   /* options */
 });
 
-// const io = require("socket.io")(3002, {
-//   cors: {
-//     origin: ["http://localhost:3000"],
-//   },
-// });
+// const io = require("socket.io")(3002,
+//);
 // console.log("asda");
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
