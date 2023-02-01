@@ -1,9 +1,19 @@
-const io = require("socket.io")(3002, {
-  cors: {
-    origin: ["http://localhost:3000"],
-  },
+import express from "express";
+import { createServer } from "http";
+import { Server } from "socket.io";
+
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  /* options */
 });
 
+// const io = require("socket.io")(3002, {
+//   cors: {
+//     origin: ["http://localhost:3000"],
+//   },
+// });
+// console.log("asda");
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
@@ -13,5 +23,11 @@ io.on("connection", (socket) => {
       sender: id,
       chat,
     });
+    console.log(chat);
   });
 });
+
+httpServer.listen(3001);
+export default httpServer;
+
+// export default io;
